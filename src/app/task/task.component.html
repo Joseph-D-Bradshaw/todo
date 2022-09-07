@@ -1,0 +1,15 @@
+<p [ngClass]="task.complete ? 'complete' : ''">{{ task.title }}</p>
+<div class="task-icons">
+  <img (click)="editTask(task.id)" class="icon" src="../../assets/edit.svg" />
+  <img
+    (click)="removeTask(task.id)"
+    class="icon"
+    src="../../assets/trash.svg"
+  />
+  <input
+    class="checkbox"
+    type="checkbox"
+    (change)="task.complete = !task.complete"
+    [checked]="task.complete"
+  />
+</div>

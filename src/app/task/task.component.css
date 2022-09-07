@@ -1,0 +1,29 @@
+.task-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox {
+  margin-left: 2rem;
+}
+
+.complete {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  max-width: 1rem;
+}
+
+.icon:hover {
+  transition: all 0.25s;
+  max-width: 1.5rem;
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

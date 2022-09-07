@@ -1,0 +1,19 @@
+<div class="controls">
+  <button (click)="addTask()">Add task</button>
+  <button>Remove selected tasks</button>
+  <button (click)="clearAllTasks()">Clear all tasks</button>
+  <button>Filter active</button>
+  <button>Filter incomplete</button>
+  <button (click)="this.debug = !this.debug">Toggle Debug Mode</button>
+</div>
+
+<div class="tasks" *ngIf="tasks.length !== 0">
+  <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+</div>
+
+<div *ngIf="debug" style="background: rgb(241, 240, 240)">
+  <h2>Debug:</h2>
+
+  <h3>Task Data:</h3>
+  <pre> {{ tasks | json }} </pre>
+</div>

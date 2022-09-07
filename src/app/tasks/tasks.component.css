@@ -1,0 +1,19 @@
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(205, 216, 252);
+  border-radius: 5px;
+  min-width: 400px;
+  max-width: 60vw;
+  padding: 1rem;
+}
+
+app-task:not(:last-child) {
+  border-bottom: 1px solid rgb(84, 121, 170);
+}
