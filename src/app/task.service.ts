@@ -15,10 +15,10 @@ export class TaskService {
     const id = this.idGen.next().value;
 
     if (title === '') {
-      title = `Task ${id}`;
+      title = 'Enter task description..';
     }
 
-    this.tasks.push({ id, title, complete: false });
+    this.tasks.unshift({ id, title, complete: false })
   }
 
   deleteAllTasks() {
@@ -27,11 +27,20 @@ export class TaskService {
 
   deleteTask(id: number) {
     const taskIndex = this.tasks.findIndex((task) => {
-      return task.id == id
-    })
+      return task.id == id;
+    });
 
     if (this.tasks[taskIndex]) {
-      this.tasks.splice(taskIndex, 1)
+      this.tasks.splice(taskIndex, 1);
     }
+  }
+
+  deleteAllCompletedTasks() {
+    const filteredTasks = this.tasks.filter((task: Task) => {
+      return !task.complete;
+    });
+
+    this.tasks = filteredTasks;
+    console.log(this.tasks)
   }
 }

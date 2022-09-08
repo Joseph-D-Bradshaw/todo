@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TaskService } from '../task.service';
+import { Task } from 'src/types';
+
+type FilterMode = 'all' | 'complete' | 'incomplete';
 
 @Component({
   selector: 'app-tasks',
@@ -9,6 +12,7 @@ import { TaskService } from '../task.service';
 })
 export class TasksComponent implements OnInit {
   tasks = this.taskService.tasks;
+  filterMode: FilterMode = 'all';
   debug = false;
 
   constructor(private taskService: TaskService) {
@@ -26,6 +30,32 @@ export class TasksComponent implements OnInit {
 
   clearAllTasks() {
     this.taskService.deleteAllTasks();
+    this.updateTasksFromService();
+  }
+
+  clearCompletedTasks() {
+    this.taskService.deleteAllCompletedTasks();
+    this.updateTasksFromService();
+  }
+
+  changeFilterMode(filterMode: FilterMode) {
+    this.filterMode = filterMode;
+  }
+
+  applyCurrentFilter(tasks: Task[]): Task[] {
+    switch (this.filterMode) {
+      case 'complete':
+        return tasks.filter(task => task.complete)
+      case 'incomplete':
+        return tasks.filter(task => !task.complete)
+      default:
+        return tasks
+    }
+  }
+
+  // todo: this shouldn't be necessary, there will be a cleaner way to keep the state
+  // in line with the html, just rusty
+  private updateTasksFromService() {
     this.tasks = this.taskService.tasks;
   }
 }

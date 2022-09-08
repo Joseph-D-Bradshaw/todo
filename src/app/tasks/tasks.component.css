@@ -17,3 +17,7 @@
 app-task:not(:last-child) {
   border-bottom: 1px solid rgb(84, 121, 170);
 }
+
+.active-filter {
+  font-weight: bold;
+}

@@ -1,14 +1,28 @@
 <div class="controls">
   <button (click)="addTask()">Add task</button>
-  <button>Remove selected tasks</button>
   <button (click)="clearAllTasks()">Clear all tasks</button>
-  <button>Filter active</button>
-  <button>Filter incomplete</button>
+  <button (click)="clearCompletedTasks()">Clear only complete tasks</button>
+  <button
+    [ngClass]="{ 'active-filter': filterMode === 'complete' }"
+    (click)="changeFilterMode('complete')"
+  >
+    Filter complete
+  </button>
+  <button
+    [ngClass]="{ 'active-filter': filterMode === 'incomplete' }"
+    (click)="changeFilterMode('incomplete')"
+  >
+    Filter incomplete
+  </button>
+  <button (click)="changeFilterMode('all')">Remove filters</button>
   <button (click)="this.debug = !this.debug">Toggle Debug Mode</button>
 </div>
 
 <div class="tasks" *ngIf="tasks.length !== 0">
-  <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+  <app-task
+    *ngFor="let task of applyCurrentFilter(tasks)"
+    [task]="task"
+  ></app-task>
 </div>
 
 <div *ngIf="debug" style="background: rgb(241, 240, 240)">

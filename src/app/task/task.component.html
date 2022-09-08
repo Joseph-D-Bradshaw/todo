@@ -1,6 +1,14 @@
-<p [ngClass]="task.complete ? 'complete' : ''">{{ task.title }}</p>
+<p [ngClass]="task.complete ? 'complete' : ''" *ngIf="!isEditing">
+  {{ task.title }}
+</p>
+<input class="editing" type="text" [(ngModel)]="task.title" *ngIf="isEditing" />
+
 <div class="task-icons">
-  <img (click)="editTask(task.id)" class="icon" src="../../assets/edit.svg" />
+  <img
+    (click)="toggleEditMode()"
+    class="icon"
+    [src]="!isEditing ? '../../assets/edit.svg' : '../../assets/check.svg'"
+  />
   <img
     (click)="removeTask(task.id)"
     class="icon"
