@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { makeIdGenerator } from 'src/utils';
 import { Task } from 'src/types';
 
@@ -41,6 +42,5 @@ export class TaskService {
     });
 
     this.tasks = filteredTasks;
-    console.log(this.tasks)
   }
 }
