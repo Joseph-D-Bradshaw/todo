@@ -3,17 +3,19 @@
 </p>
 <input class="editing" type="text" [(ngModel)]="task.title" *ngIf="isEditing" />
 
-<div class="task-icons">
-  <img
-    (click)="toggleEditMode()"
-    class="icon"
-    [src]="!isEditing ? '../../assets/edit.svg' : '../../assets/check.svg'"
-  />
-  <img
-    (click)="removeTask(task.id)"
-    class="icon"
-    src="../../assets/trash.svg"
-  />
+<div class="controls">
+  <div class="task-icons">
+    <img
+      (click)="toggleEditMode()"
+      class="icon"
+      [src]="!isEditing ? '../../assets/edit.svg' : '../../assets/check.svg'"
+      />
+    <img
+      (click)="removeTask(task.id)"
+      class="icon"
+      src="../../assets/trash.svg"
+    />
+  </div>
   <input
     class="checkbox"
     type="checkbox"

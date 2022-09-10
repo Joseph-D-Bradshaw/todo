@@ -19,6 +19,18 @@ export class TaskService {
       title = 'Enter task description..';
     }
 
+    let isDuplicate = false;
+    this.tasks.forEach((task) => {
+      if (title === task.title) {
+        isDuplicate = true;
+        return;
+      }
+    })
+
+    if (isDuplicate) {
+      return;
+    }
+
     this.tasks.unshift({ id, title, complete: false })
   }
 

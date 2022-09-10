@@ -19,5 +19,35 @@ app-task:not(:last-child) {
 }
 
 .active-filter {
-  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+
+.filter-icon {
+  max-width: 1.5rem;
+}
+
+.icon {
+  max-width: 1.5rem;
+}
+
+.filters,
+.filters > .filters-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filters > .filters-container > .icon {
+  max-width: 1.25rem;
+}
+
+.filters {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding: 2px;
+}
+
+.filters-container {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 2px;
 }

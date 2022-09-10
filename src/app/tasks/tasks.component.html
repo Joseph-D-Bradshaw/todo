@@ -1,21 +1,35 @@
 <div class="controls">
-  <button (click)="addTask()">Add task</button>
-  <button (click)="clearAllTasks()">Clear all tasks</button>
-  <button (click)="clearCompletedTasks()">Clear only complete tasks</button>
-  <button
-    [ngClass]="{ 'active-filter': filterMode === 'complete' }"
-    (click)="changeFilterMode('complete')"
-  >
-    Filter complete
-  </button>
-  <button
-    [ngClass]="{ 'active-filter': filterMode === 'incomplete' }"
-    (click)="changeFilterMode('incomplete')"
-  >
-    Filter incomplete
-  </button>
-  <button (click)="changeFilterMode('all')">Remove filters</button>
-  <button (click)="this.debug = !this.debug">Toggle Debug Mode</button>
+  <img (click)="addTask()" class="icon" src="../../assets/add-document.svg" title="Add task"/>
+  <img (click)="clearAllTasks()" class="icon" src="../../assets/trash.svg" title="Clear all tasks"/>
+  <img (click)="clearCompletedTasks()" class="icon" src="../../assets/delete-document.svg" title="Clear only completed tasks"/>
+
+  <div class="filters">
+    <img class="filter-icon" src="../../assets/filter.svg"/>
+    <div class="filters-container">
+      <img 
+        (click)="changeFilterMode('complete')"
+        [ngClass]="{'icon': true, 'active-filter': filterMode === 'complete'}"
+        src="../../assets/checkbox-dark.svg"
+        title="Show only complete tasks"
+      />
+      <img 
+        (click)="changeFilterMode('incomplete')"
+        [ngClass]="{'icon': true, 'active-filter': filterMode === 'incomplete'}"
+        src="../../assets/checkbox.svg"
+        title="Show only incomplete tasks"
+      />
+      <img 
+        (click)="changeFilterMode('all')"
+        [ngClass]="{'icon': true, 'active-filter': filterMode === 'all'}"
+        src="../../assets/clean.svg"
+        title="Show all tasks"
+      />
+    </div>
+  </div>
+  <img (click)="this.debug = !this.debug" class="icon"
+       [src]="this.debug ? '../../assets/bug-bold.svg' : '../../assets/bug.svg'"
+       title="Toggle debug mode"
+  />
 </div>
 
 <div class="tasks" *ngIf="tasks.length !== 0">

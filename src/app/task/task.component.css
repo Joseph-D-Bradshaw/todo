@@ -1,7 +1,12 @@
+.controls,
 .task-icons {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.task-icons {
+  visibility: hidden;
 }
 
 .checkbox {
@@ -26,6 +31,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+:host:hover > .controls > .task-icons {
+  visibility: visible;
 }
 
 .editing {
